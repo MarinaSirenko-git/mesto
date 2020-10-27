@@ -10,9 +10,109 @@
 </head>
 <body class="page">
   <div class="page__content">
-    <header class="header">
+    <header class="header page__header-geometry">
       <img class="header__logo" src="./images/logo.svg" alt="лого Mesto Russia">
     </header>
+    <main class="content">
+      <section class="user">
+        <div class="user-info user__user-info-geometry">
+          <div class="user-info__user-pic">
+            <img class="user-info__user-photo" src="./images/image.jpg" alt="Аватар">
+          </div>
+          <div class="user-info__about">
+              <div class="user-info__edit-wrap">
+                <h1 class="user-info__name">Жак-Ив Кусто</h1>
+                <span class="user-info__edit-icon" role="button" tabindex="0" aria-label="Редактировать имя"></span>
+              </div>
+              <p class="user-info__career">Исследователь океана</p>
+          </div>
+          <div class="user-info__add-button">
+            <span class="user-info__add-icon" role="button" tabindex="0" aria-label="Добавить фото"></span>
+          </div>
+        </div>
+        <ul class="cards user__cards-geometry">
+          <li class="cards__item">
+            <article class="cards__semantic-wrap">
+              <figure class="cards__mark-photo">
+                <img class="cards__photo" src="./images/karachayevsk.jpg" alt="Загруженное изображение">
+                <figcaption class="cards__caption">
+                  <h2 class="cards__title">Карачаевск</h2>
+                  <span class="cards__like-btn" role="button" tabindex="0" aria-label="Поставить лайк"></span>
+                </figcaption>
+              </figure>
+            </article>
+          </li>
+          <li class="cards__item">
+            <article class="cards__semantic-wrap">
+              <figure class="cards__mark-photo">
+                <img class="cards__photo" src="./images/mount_elbrus.jpg" alt="Загруженное изображение">
+                <figcaption class="cards__caption">
+                  <h2 class="cards__title">Гора Эльбрус</h2>
+                  <span class="cards__like-btn" role="button" tabindex="0" aria-label="Поставить лайк"></span>
+                </figcaption>
+              </figure>
+            </article>
+          </li>
+          <li class="cards__item">
+            <article class="cards__semantic-wrap">
+              <figure class="cards__mark-photo">
+                <img class="cards__photo" src="./images/dombay.jpg" alt="Загруженное изображение">
+                <figcaption class="cards__caption">
+                  <h2 class="cards__title">Домбай</h2>
+                  <span class="cards__like-btn" role="button" tabindex="0" aria-label="Поставить лайк"></span>
+                </figcaption>
+              </figure>
+            </article>
+          </li>
+          <li class="cards__item">
+            <article class="cards__semantic-wrap">
+              <figure class="cards__mark-photo">
+                <img class="cards__photo" src="./images/mount_elbrus.jpg" alt="Загруженное изображение">
+                <figcaption class="cards__caption">
+                  <h2 class="cards__title">Гора Эльбрус</h2>
+                  <span class="cards__like-btn" role="button" tabindex="0" aria-label="Поставить лайк"></span>
+                </figcaption>
+              </figure>
+            </article>
+          </li>
+          <li class="cards__item">
+            <article class="cards__semantic-wrap">
+              <figure class="cards__mark-photo">
+                <img class="cards__photo" src="./images/dombay.jpg" alt="Загруженное изображение">
+                <figcaption class="cards__caption">
+                  <h2 class="cards__title">Домбай</h2>
+                  <span class="cards__like-btn" role="button" tabindex="0" aria-label="Поставить лайк"></span>
+                </figcaption>
+              </figure>
+            </article>
+          </li>
+          <li class="cards__item">
+            <article class="cards__semantic-wrap">
+              <figure class="cards__mark-photo">
+                <img class="cards__photo" src="./images/karachayevsk.jpg" alt="Загруженное изображение">
+                <figcaption class="cards__caption">
+                  <h2 class="cards__title">Карачаево-Черкесия</h2>
+                  <span class="cards__like-btn" role="button" tabindex="0" aria-label="Поставить лайк"></span>
+                </figcaption>
+              </figure>
+            </article>
+          </li>  
+        </ul>
+      </section>
+    </main>
+    <footer class="footer">
+      <p class="footer__copyright">© 2020 Mesto Russia</p>
+    </footer>
   </div>
+  <div class="popup overlay">
+    <form class="popup__container">
+      <span class="popup__close-icon" role="button" tabindex="0" aria-label="Закрыть"></span>
+      <h2 class="popup__title">Редактировать профиль</h2>
+      <input class="popup__input popup__input_type_name" type="text">
+      <input class="popup__input popup__input_type_career" type="text">
+      <button class="popup__btn">Сохранить</button>
+    </form>
+  </div>
+  <script src="./scripts/index.js"></script>
 </body>
 </html>

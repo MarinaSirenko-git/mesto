@@ -1,0 +1,9 @@
+.user__cards-geometry {
+  margin-bottom: 45px;
+}
+
+@media screen and (max-width: 424px) {
+  .user__cards-geometry {
+    margin-bottom: 27px;
+  }
+}
