@@ -17,4 +17,4 @@
 * JavaScript
 
 
-Ссылка на проект 
+Ссылка на проект  https://marinasirenko-git.github.io/mesto/
