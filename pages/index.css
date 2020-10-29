@@ -2,13 +2,13 @@
 @import url('./../vendor/fonts/fonts.css');
 @import url('./../blocks/page/page.css');
 @import url('./../blocks/page/__content/page__content.css');
+@import url('./../blocks/page/__main/page__main.css');
 @import url('./../blocks/page/__header-geometry/page__header-geometry.css');
 @import url('./../blocks/header/header.css');
 @import url('./../blocks/header/__logo/header__logo.css');
 @import url('./../blocks/user/user.css');
 @import url('./../blocks/user/__user-info-geometry/user__user-info-geometry.css');
 @import url('./../blocks/user-info/user-info.css');
-@import url('./../blocks/user-info/__user-pic/user-info__user-pic.css');
 @import url('./../blocks/user-info/__user-photo/user-info__user-photo.css');
 @import url('./../blocks/user-info/__about/user-info__about.css');
 @import url('./../blocks/user-info/__name/user-info__name.css');
@@ -20,8 +20,6 @@
 @import url('./../blocks/cards/cards.css');
 @import url('./../blocks/user/__cards-geometry/user__cards-geometry.css');
 @import url('./../blocks/cards/__item/cards__item.css');
-@import url('./../blocks/cards/__semantic-wrap/cards__semantic-wrap.css');
-@import url('./../blocks/cards/__mark-photo/cards__mark-photo.css');
 @import url('./../blocks/cards/__photo/cards__photo.css');
 @import url('./../blocks/cards/__caption/cards__caption.css');
 @import url('./../blocks/cards/__title/cards__title.css');

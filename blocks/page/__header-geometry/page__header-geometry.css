@@ -3,6 +3,18 @@
   margin-bottom: 40px;
 }
 
+@media screen and (max-width: 1023px) {
+  .page__header-geometry {
+    padding-left: 30px;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .page__header-geometry {
+    padding-left: 19px;
+  }
+}
+
 @media screen and (max-width: 424px) {
   .page__header-geometry {
     margin-top: 28px;

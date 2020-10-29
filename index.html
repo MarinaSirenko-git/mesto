@@ -13,7 +13,7 @@
     <header class="header page__header-geometry">
       <img class="header__logo" src="./images/logo.svg" alt="лого Mesto Russia">
     </header>
-    <main class="content">
+    <main class="content page__main">
       <section class="user">
         <div class="user-info user__user-info-geometry">
           <div class="user-info__user-pic">
@@ -22,80 +22,60 @@
           <div class="user-info__about">
               <div class="user-info__edit-wrap">
                 <h1 class="user-info__name">Жак-Ив Кусто</h1>
-                <span class="user-info__edit-icon" role="button" tabindex="0" aria-label="Редактировать имя"></span>
+                <button class="user-info__edit-icon" type="button" aria-label="Редактировать имя"></button>
+                <!-- Дорогой ревьюер Александр Семёнов, нууу удобно же через span делать иконочные кнопки: стили обнулять не надо, 
+                  удобно код читать (сразу понятно, что иконка и что никуда не отправляет данные), и это же зачем-то практикуется. 
+                  Например, Яндекс.Музыка - там тоже все интерактивные иконочки через span и без красот (role="button" tabindex="0" aria-label="Редактировать имя").
+                Какая выгода использовать в таком случае button?  ¯\_(ツ)_/¯ -->
               </div>
               <p class="user-info__career">Исследователь океана</p>
           </div>
           <div class="user-info__add-button">
-            <span class="user-info__add-icon" role="button" tabindex="0" aria-label="Добавить фото"></span>
+            <button class="user-info__add-icon" aria-label="Добавить фото"></button>
           </div>
         </div>
         <ul class="cards user__cards-geometry">
           <li class="cards__item">
-            <article class="cards__semantic-wrap">
-              <figure class="cards__mark-photo">
-                <img class="cards__photo" src="./images/karachayevsk.jpg" alt="Загруженное изображение">
-                <figcaption class="cards__caption">
-                  <h2 class="cards__title">Карачаевск</h2>
-                  <span class="cards__like-btn" role="button" tabindex="0" aria-label="Поставить лайк"></span>
-                </figcaption>
-              </figure>
-            </article>
+            <img class="cards__photo" src="./images/karachayevsk.jpg" alt="Загруженное изображение">
+            <div class="cards__caption">
+              <h2 class="cards__title">Карачаевск</h2>
+              <button class="cards__like-btn" aria-label="Поставить лайк"></button>
+            </div>
           </li>
           <li class="cards__item">
-            <article class="cards__semantic-wrap">
-              <figure class="cards__mark-photo">
-                <img class="cards__photo" src="./images/mount_elbrus.jpg" alt="Загруженное изображение">
-                <figcaption class="cards__caption">
-                  <h2 class="cards__title">Гора Эльбрус</h2>
-                  <span class="cards__like-btn" role="button" tabindex="0" aria-label="Поставить лайк"></span>
-                </figcaption>
-              </figure>
-            </article>
+            <img class="cards__photo" src="./images/mount_elbrus.jpg" alt="Загруженное изображение">
+            <div class="cards__caption">
+              <h2 class="cards__title">Гора Эльбрус</h2>
+              <button class="cards__like-btn" aria-label="Поставить лайк"></button>
+            </div>
           </li>
           <li class="cards__item">
-            <article class="cards__semantic-wrap">
-              <figure class="cards__mark-photo">
-                <img class="cards__photo" src="./images/dombay.jpg" alt="Загруженное изображение">
-                <figcaption class="cards__caption">
-                  <h2 class="cards__title">Домбай</h2>
-                  <span class="cards__like-btn" role="button" tabindex="0" aria-label="Поставить лайк"></span>
-                </figcaption>
-              </figure>
-            </article>
+            <img class="cards__photo" src="./images/dombay.jpg" alt="Загруженное изображение">
+            <div class="cards__caption">
+              <h2 class="cards__title">Домбай</h2>
+              <button class="cards__like-btn" aria-label="Поставить лайк"></button>
+            </div>
           </li>
           <li class="cards__item">
-            <article class="cards__semantic-wrap">
-              <figure class="cards__mark-photo">
-                <img class="cards__photo" src="./images/mount_elbrus.jpg" alt="Загруженное изображение">
-                <figcaption class="cards__caption">
-                  <h2 class="cards__title">Гора Эльбрус</h2>
-                  <span class="cards__like-btn" role="button" tabindex="0" aria-label="Поставить лайк"></span>
-                </figcaption>
-              </figure>
-            </article>
+            <img class="cards__photo" src="./images/mount_elbrus.jpg" alt="Загруженное изображение">
+            <div class="cards__caption">
+              <h2 class="cards__title">Гора Эльбрус</h2>
+              <button class="cards__like-btn" aria-label="Поставить лайк"></button>
+            </div>
           </li>
           <li class="cards__item">
-            <article class="cards__semantic-wrap">
-              <figure class="cards__mark-photo">
-                <img class="cards__photo" src="./images/dombay.jpg" alt="Загруженное изображение">
-                <figcaption class="cards__caption">
-                  <h2 class="cards__title">Домбай</h2>
-                  <span class="cards__like-btn" role="button" tabindex="0" aria-label="Поставить лайк"></span>
-                </figcaption>
-              </figure>
-            </article>
+            <img class="cards__photo" src="./images/dombay.jpg" alt="Загруженное изображение">
+            <div class="cards__caption">
+              <h2 class="cards__title">Домбай</h2>
+              <button class="cards__like-btn" aria-label="Поставить лайк"></button>
+            </div>
           </li>
           <li class="cards__item">
-            <article class="cards__semantic-wrap">
-              <figure class="cards__mark-photo">
-                <img class="cards__photo" src="./images/karachayevsk.jpg" alt="Загруженное изображение">
-                <figcaption class="cards__caption">
-                  <h2 class="cards__title">Карачаево-Черкесия</h2>
-                  <span class="cards__like-btn" role="button" tabindex="0" aria-label="Поставить лайк"></span>
-                </figcaption>
-              </figure>
-            </article>
+            <img class="cards__photo" src="./images/karachayevsk.jpg" alt="Загруженное изображение">
+            <div class="cards__caption">
+              <h2 class="cards__title">Карачаево-Черкесия</h2>
+              <button class="cards__like-btn" aria-label="Поставить лайк"></button>
+            </div>
           </li>  
         </ul>
       </section>
@@ -104,12 +84,12 @@
       <p class="footer__copyright">© 2020 Mesto Russia</p>
     </footer>
   </div>
-  <div class="popup overlay">
+  <div class="popup">
     <form class="popup__container">
-      <span class="popup__close-icon" role="button" tabindex="0" aria-label="Закрыть"></span>
+      <button class="popup__close-icon" aria-label="Закрыть"></button>
       <h2 class="popup__title">Редактировать профиль</h2>
-      <input class="popup__input popup__input_type_name" type="text">
-      <input class="popup__input popup__input_type_career" type="text">
+      <input class="popup__input popup__input_type_name" type="text" name="username">
+      <input class="popup__input popup__input_type_career" type="text" name="usercareer">
       <button class="popup__btn">Сохранить</button>
     </form>
   </div>

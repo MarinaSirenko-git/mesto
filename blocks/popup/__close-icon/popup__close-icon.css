@@ -2,6 +2,8 @@
   display: block;
   width: 41px;
   height: 41px;
+  background-color: transparent;
+  border: none;
   background-image: url(./../../../images/close.svg);
   background-size: contain;
   background-position: center;
