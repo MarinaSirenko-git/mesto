@@ -8,6 +8,7 @@
   cursor: pointer;
   transition: opacity 0.5s ease;
   position: relative;
+  flex-basis: 150px;
 }
 
 .user-info__add-icon:before {
@@ -46,6 +47,8 @@
   .user-info__add-icon  {
     width: 282px;
     margin: 0 auto;
+    margin-top: 36px;
+    flex-basis: auto;
   }
 
   .user-info__add-icon:before {

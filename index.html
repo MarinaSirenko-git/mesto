@@ -16,23 +16,15 @@
     <main class="content page__main">
       <section class="user">
         <div class="user-info user__user-info-geometry">
-          <div class="user-info__user-pic">
-            <img class="user-info__user-photo" src="./images/image.jpg" alt="Аватар">
-          </div>
+          <img class="user-info__user-photo" src="./images/image.jpg" alt="Аватар">
           <div class="user-info__about">
               <div class="user-info__edit-wrap">
                 <h1 class="user-info__name">Жак-Ив Кусто</h1>
                 <button class="user-info__edit-icon" type="button" aria-label="Редактировать имя"></button>
-                <!-- Дорогой ревьюер Александр Семёнов, нууу удобно же через span делать иконочные кнопки: стили обнулять не надо, 
-                  удобно код читать (сразу понятно, что иконка и что никуда не отправляет данные), и это же зачем-то практикуется. 
-                  Например, Яндекс.Музыка - там тоже все интерактивные иконочки через span и без красот (role="button" tabindex="0" aria-label="Редактировать имя").
-                Какая выгода использовать в таком случае button?  ¯\_(ツ)_/¯ -->
               </div>
               <p class="user-info__career">Исследователь океана</p>
           </div>
-          <div class="user-info__add-button">
-            <button class="user-info__add-icon" aria-label="Добавить фото" type="button"></button>
-          </div>
+          <button class="user-info__add-icon" aria-label="Добавить фото" type="button"></button>
         </div>
         <ul class="cards user__cards-geometry">
           <li class="cards__item">
@@ -85,7 +77,7 @@
     </footer>
   </div>
   <div class="popup">
-    <form class="popup__container">
+    <form class="popup__container" name="user-info">
       <button class="popup__close-icon" aria-label="Закрыть" type="button"></button>
       <h2 class="popup__title">Редактировать профиль</h2>
       <input class="popup__input popup__input_type_name" type="text" name="username">
