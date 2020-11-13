@@ -2,7 +2,7 @@
   font-family: 'Inter', 'Arial', sans-serif;
   -webkit-font-smoothing: antialiased;
   text-size-adjust: 100%;
-  text-rendering: optimizelegibility;
+  text-rendering: optimizeLegibility;
   background-color: #000000;
   position: relative;
 }
