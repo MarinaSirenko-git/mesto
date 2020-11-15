@@ -5,4 +5,5 @@
   text-rendering: optimizeLegibility;
   background-color: #000000;
   position: relative;
+  z-index: 1;
 }
