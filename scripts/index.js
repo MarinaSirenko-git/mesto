@@ -135,11 +135,13 @@ containerCards.appendChild(fragment);
 
  
 const addImageForm = imageAddPopup.querySelector('.popup__container');
-const titleArr = addImageForm.querySelector('.popup__input_type_title').value;
-const linkArr = addImageForm.querySelector('.popup__input_type_link').value;
+const titleInput = addImageForm.querySelector('.popup__input_type_title');
+const linkInput = addImageForm.querySelector('.popup__input_type_link'); 
 
 function formImageSubmitHandler (evt) {
   evt.preventDefault();
+  titleArr = titleInput.value;
+  linkArr = linkInput.value;
   const newArr = ({name: titleArr, link: linkArr});
   containerCards.prepend(renderCard(newArr));
   addImageForm.querySelector('.popup__input_type_title').value = "";
