@@ -144,8 +144,8 @@ function formImageSubmitHandler (evt) {
   const linkArr = linkInput.value;
   const newArr = ({name: titleArr, link: linkArr});
   containerCards.prepend(renderCard(newArr));
-  addImageForm.querySelector('.popup__input_type_title').value = "";
-  addImageForm.querySelector('.popup__input_type_link').value = "";
+  titleInput.value = "";
+  linkInput.value = "";
   closePopup(imageAddPopup);
 }; 
 
