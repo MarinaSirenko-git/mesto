@@ -12,141 +12,43 @@ const addButton = user.querySelector('.user-info__add-icon');
 const closeUserPopupButton = userInfoPopup.querySelector('.popup__close-icon_place_user-info');
 const closeAddImagePopupButton = imageAddPopup.querySelector('.popup__close-icon_place_add-image');
 
-const formElement = popup.querySelector('.popup__container');
-const nameInput = formElement.querySelector('.popup__input_type_name');
-const careerInput = formElement.querySelector('.popup__input_type_career');
+const editUserForm = document.forms['user-info'];
+const nameInput = editUserForm.elements['user-name'];
+const careerInput = editUserForm.elements['user-career'];
 
-
-
-function openPopup(element) {
-  element.classList.add('popup_opened');
-}
-
-function closePopup(element) {
-  element.classList.remove('popup_opened');
-} 
-
-function editButtonSubmitHandler() {
-  nameInput.value = name.textContent; 
-  careerInput.value = career.textContent;
-  openPopup(userInfoPopup);
-}
-
-editButton.addEventListener('click', editButtonSubmitHandler);
-
-function addButtonSubmitHandler() {
-  openPopup(imageAddPopup);
-}
-
-addButton.addEventListener('click', addButtonSubmitHandler);
-
-function closeButtonUserSubmitHandler() {
-  closePopup(userInfoPopup);
-}
-
-closeUserPopupButton.addEventListener('click', closeButtonUserSubmitHandler);
-
-function closeButtonAddImageSubmitHandler() {
-  closePopup(imageAddPopup);
-}
-
-closeAddImagePopupButton.addEventListener('click', closeButtonAddImageSubmitHandler);
-
-function formSubmitHandler (evt) {
-  evt.preventDefault();
-  name.textContent = nameInput.value;
-  career.textContent = careerInput.value;
-  closePopup(userInfoPopup);
-}
-
-formElement.addEventListener('submit', formSubmitHandler);
 
 const initialCards = [
   {
-    name: 'Архыз',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/arkhyz.jpg'
+    name: 'Чайниз фуд',
+    link: 'https://images.unsplash.com/photo-1523905330026-b8bd1f5f320e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1958&q=80'
   },
   {
-    name: 'Челябинская область',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/chelyabinsk-oblast.jpg'
+    name: 'Ммм...свинина и креветки',
+    link: 'https://images.unsplash.com/photo-1527578054032-8d8f044e013d?ixlib=rb-1.2.1&ixid=MXwxMjA3fDB8MHxzZWFyY2h8MXx8a29yZWFuJTIwZm9vZHxlbnwwfHwwfA%3D%3D&auto=format&fit=crop&w=500&q=60'
   },
   {
-    name: 'Иваново',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/ivanovo.jpg'
+    name: 'Бургер',
+    link: 'https://images.unsplash.com/photo-1550547660-d9450f859349?ixlib=rb-1.2.1&ixid=MXwxMjA3fDB8MHxzZWFyY2h8NHx8YnVyZ2VyfGVufDB8fDB8&auto=format&fit=crop&w=500&q=60'
   },
   {
-    name: 'Камчатка',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kamchatka.jpg'
+    name: 'Что-то мексиканское',
+    link: 'https://images.unsplash.com/photo-1576829824883-bf9e6b522252?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=701&q=80'
   },
   {
-    name: 'Холмогорский район',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kholmogorsky-rayon.jpg'
+    name: 'Вина бокал',
+    link: 'https://images.unsplash.com/photo-1547595628-c61a29f496f0?ixlib=rb-1.2.1&ixid=MXwxMjA3fDB8MHxzZWFyY2h8MTF8fHdpbmV8ZW58MHx8MHw%3D&auto=format&fit=crop&w=500&q=60'
   },
   {
-    name: 'Байкал',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/baikal.jpg'
+    name: 'Борщ',
+    link: 'https://images.unsplash.com/photo-1527976746453-f363eac4d889?ixlib=rb-1.2.1&ixid=MXwxMjA3fDB8MHxzZWFyY2h8MXx8cnVzc2lhbiUyMGZvb2R8ZW58MHx8MHw%3D&auto=format&fit=crop&w=500&q=60'
   }
 ]; 
 
-const cardsTemplate = document.querySelector('.cards__container').content;
-
-function renderCard(card) {
-  const cardElement = cardsTemplate.cloneNode(true);
-
-  const imageCloseButton = imageShowPopup.querySelector('.popup__close-icon_place_show-image');
-  const image = cardElement.querySelector('.cards__photo');
-
-  const imageCaption = imageShowPopup.querySelector('.popup__image-caption');
-  const imageLink = imageShowPopup.querySelector('.popup__fullsize-image');
-
-  cardElement.querySelector('.cards__photo').src = card.link;
-  cardElement.querySelector('.cards__title').textContent = card.name;
-  
-  image.addEventListener('click', function() {
-    imageCaption.textContent = card.name;
-    imageLink.src = card.link;
-    openPopup(imageShowPopup);
-  });
-
-  imageCloseButton.addEventListener('click', function() {
-    closePopup(imageShowPopup);
-  });
-
-  cardElement.querySelector('.cards__like-btn').addEventListener('click', function (evt) {
-    evt.target.classList.toggle('cards__like-btn_active');
-  });
-
-  cardElement.querySelector('.cards__remove-btn').addEventListener('click', function (evt) {
-      const removeCards = evt.target.closest('.cards__item');
-      removeCards.remove();
-    });
-
-  return cardElement;
-}
-
-const containerCards = document.querySelector('.cards');
-const fragment = document.createDocumentFragment();
-
-for (let i = 0; i < initialCards.length; i++) {
-  fragment.appendChild(renderCard(initialCards[i]));
-}
-
-containerCards.appendChild(fragment);
-
- 
-const addImageForm = imageAddPopup.querySelector('.popup__container');
-const titleInput = addImageForm.querySelector('.popup__input_type_title');
-const linkInput = addImageForm.querySelector('.popup__input_type_link'); 
-
-function formImageSubmitHandler (evt) {
-  evt.preventDefault();
-  const titleArr = titleInput.value;
-  const linkArr = linkInput.value;
-  const newArr = ({name: titleArr, link: linkArr});
-  containerCards.prepend(renderCard(newArr));
-  titleInput.value = "";
-  linkInput.value = "";
-  closePopup(imageAddPopup);
-}; 
-
-addImageForm.addEventListener('submit', formImageSubmitHandler);
+const validationConfig = {
+  formElement: '.popup__container',
+  inputElement: '.popup__input',
+  buttonElement: '.popup__btn',
+  inactiveButtonClass: 'input__btn_inactive',
+  inputErrorClass: 'popup__input_status_error',
+  errorClass: 'popup__input-error_active'
+};
