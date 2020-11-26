@@ -15,7 +15,7 @@ function closePopup(element) {
 //Ф-я обработчик при нажатии на esc
 function elementKeydownHandler(element){
   return function( evt ){
-    if ((evt.key) == 'Escape') {
+    if ((evt.key) === 'Escape') {
       return closePopup(element);
     }
   };
@@ -66,3 +66,25 @@ function addContentUser() {
   name.textContent = nameInput.value;
   career.textContent = careerInput.value;
 }
+
+//Ф-я обработчик события submit у кнопки
+function editUserFormSubmitHandler(evt) {
+  evt.preventDefault();
+  addContentUser();
+  closePopup(userInfoPopup);
+  editUserForm.reset();
+  userSubmitButton.classList.add('input__btn_inactive');
+}
+
+editUserForm.addEventListener('submit', editUserFormSubmitHandler);
+
+//Ф-я обработчик события submit у кнопки
+function addImageFormSubmitHandler(evt) {
+  evt.preventDefault();
+  addContentImage();
+  closePopup(imageAddPopup);
+  addImageForm.reset();
+  imageSubmitButton.classList.add('input__btn_inactive');
+}
+
+addImageForm.addEventListener('submit', addImageFormSubmitHandler);

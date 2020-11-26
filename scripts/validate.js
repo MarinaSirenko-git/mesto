@@ -33,11 +33,13 @@ function toggleButtonState(button, isActive, config) {
   }
 }
 
+
+
 //Ф-я слушает событие input и по каждому вводу вызывает ф-ю проверки валидности и ф-ю переключения состояния кнопки
 function setInputListeners(form, config) {
   const inputsArr = Array.from(form.querySelectorAll(config.inputElement));
+  
   const button = form.querySelector(config.buttonElement);
-
   toggleButtonState(button, form.checkValidity(), config);
 
   inputsArr.forEach((input) => {
@@ -51,24 +53,14 @@ function setInputListeners(form, config) {
 //Ф-я слушает событие submit у каждой формы, отменяет стандартные действия по событию и убирает класс видимости у popup
 function enableValidation(config) {
   const formsArr = Array.from(document.querySelectorAll(config.formElement));
-
   formsArr.forEach((form) => {
 
     setInputListeners(form, config);
-    closePopup(form.closest('.popup'));
 
     form.addEventListener('submit', function (evt) {
       evt.preventDefault();
-
-      if (form === document.forms['user-info']) {
-        addContentUser();
-      } else if (form === document.forms['add-image']) {
-        addContentImage();
-      }
-
-      closePopup(form.closest('.popup'));
     });
   });
 }
 
-enableValidation(validationConfig);  
+enableValidation(validationConfig);
