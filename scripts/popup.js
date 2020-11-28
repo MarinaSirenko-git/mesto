@@ -26,13 +26,13 @@ function clearInput(element, config) {
 //Ф-я если находит в попапе кнопку добавляет ей стили неактивности
 function resetButton(element, config) {
   const button = element.querySelector('.popup__btn');
-  if(button === true) {
+  if(element.contains(button)) {
     button.classList.add(config.inactiveButtonClass);
   }
 }
 
 //Ф-я обработчик при нажатии на esc
-function elementKeydownHandler(element){
+function elementKeydownHandler(element) {
   return function( evt ){
     if ((evt.key) === 'Escape') {
       clearInput(element, validationConfig);
