@@ -28,12 +28,10 @@ function checkInputValidity(form, input, config) {
 function toggleButtonState(button, isActive, config) {
   if(isActive) {
     button.classList.remove(config.inactiveButtonClass);
-  } else {
+  }else {
     button.classList.add(config.inactiveButtonClass);
   }
 }
-
-
 
 //Ф-я слушает событие input и по каждому вводу вызывает ф-ю проверки валидности и ф-ю переключения состояния кнопки
 function setInputListeners(form, config) {

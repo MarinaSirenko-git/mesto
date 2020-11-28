@@ -12,10 +12,31 @@ function closePopup(element) {
   element.removeEventListener('mousedown', elementMousedownHandler(element));
 } 
 
+//Ф-я очищает input
+function clearInput(element, config) {
+  const form = element.querySelector('.popup__container');
+  const inputList = element.querySelectorAll('.popup__input');
+  const inputs = Array.from(inputList);
+  inputs.forEach(input => {
+    hideInputError(form, input, config);
+    input.value = ''; 
+  });
+}
+
+//Ф-я если находит в попапе кнопку добавляет ей стили неактивности
+function resetButton(element, config) {
+  const button = element.querySelector('.popup__btn');
+  if(button === true) {
+    button.classList.add(config.inactiveButtonClass);
+  }
+}
+
 //Ф-я обработчик при нажатии на esc
 function elementKeydownHandler(element){
   return function( evt ){
     if ((evt.key) === 'Escape') {
+      clearInput(element, validationConfig);
+      resetButton(element, validationConfig);
       return closePopup(element);
     }
   };
@@ -25,6 +46,8 @@ function elementKeydownHandler(element){
 function elementMousedownHandler(element) {
   return function (evt) {
     if (evt.target.classList.contains('popup')) {
+      clearInput(element, validationConfig);
+      resetButton(element, validationConfig);
       return closePopup(element);
     }
   };

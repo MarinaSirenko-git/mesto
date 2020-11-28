@@ -3,6 +3,7 @@ const name = user.querySelector('.user-info__name');
 const career = user.querySelector('.user-info__career');
 
 const popup = document.querySelector('.popup');
+const visiblePopup = document.querySelector('.popup_opened');
 const userInfoPopup = document.querySelector('.popup_type_user-info');
 const userSubmitButton = userInfoPopup.querySelector('.popup__btn');
 const imageAddPopup = document.querySelector('.popup_type_add-image');
@@ -21,7 +22,7 @@ const careerInput = editUserForm.elements['user-career'];
 
 const addImageForm = document.forms['add-image'];
 const titleInput = addImageForm.elements['photo-title'];
-const linkInput = addImageForm.elements['photo-link']; 
+const linkInput = addImageForm.elements['photo-link'];
 
 
 const validationConfig = {
