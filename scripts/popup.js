@@ -73,6 +73,8 @@ addButton.addEventListener('click', addButtonClickHandler);
 //Ф-я обработчик кнопки закрытия 
 function closeButtonUserClickHandler() {
     closePopup(userInfoPopup);
+    clearInput(userInfoPopup, validationConfig);
+    resetButton(userInfoPopup, validationConfig);
 }
 
 closeUserPopupButton.addEventListener('click', closeButtonUserClickHandler);
@@ -80,6 +82,8 @@ closeUserPopupButton.addEventListener('click', closeButtonUserClickHandler);
 //Ф-я обработчик кнопки закрытия 
 function closeButtonAddImageClickHandler() {
   closePopup(imageAddPopup);
+  clearInput(imageAddPopup, validationConfig);
+  resetButton(imageAddPopup, validationConfig);
 }
 
 closeAddImagePopupButton.addEventListener('click', closeButtonAddImageClickHandler);
