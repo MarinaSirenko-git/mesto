@@ -1,26 +1,26 @@
 const initialCards = [
   {
-    name: 'Чайниз фуд',
-    link: 'https://images.unsplash.com/photo-1523905330026-b8bd1f5f320e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1958&q=80'
+    name: 'Lusy',
+    link: 'https://images.unsplash.com/photo-1517776832751-0a7e6993de03?ixlib=rb-1.2.1&ixid=MXwxMjA3fDB8MHxzZWFyY2h8NHx8c3RyZWV0JTIwYXJ0fGVufDB8fDB8&auto=format&fit=crop&w=500&q=60'
   },
   {
-    name: 'Ммм...свинина и креветки',
-    link: 'https://images.unsplash.com/photo-1527578054032-8d8f044e013d?ixlib=rb-1.2.1&ixid=MXwxMjA3fDB8MHxzZWFyY2h8MXx8a29yZWFuJTIwZm9vZHxlbnwwfHwwfA%3D%3D&auto=format&fit=crop&w=500&q=60'
+    name: 'Océan Indien',
+    link: 'https://images.unsplash.com/photo-1523554888454-84137e72c3ce?ixid=MXwxMjA3fDB8MHxzZWFyY2h8MTR8fHN0cmVldCUyMGFydHxlbnwwfHwwfA%3D%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60'
   },
   {
-    name: 'Бургер',
-    link: 'https://images.unsplash.com/photo-1550547660-d9450f859349?ixlib=rb-1.2.1&ixid=MXwxMjA3fDB8MHxzZWFyY2h8NHx8YnVyZ2VyfGVufDB8fDB8&auto=format&fit=crop&w=500&q=60'
+    name: 'Pacifique',
+    link: 'https://images.unsplash.com/photo-1533157785824-c1febdd284dc?ixid=MXwxMjA3fDB8MHxzZWFyY2h8MTh8fHN0cmVldCUyMGFydHxlbnwwfHwwfA%3D%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60'
   },
   {
-    name: 'Что-то мексиканское',
-    link: 'https://images.unsplash.com/photo-1576829824883-bf9e6b522252?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=701&q=80'
+    name: 'Make Love not War',
+    link: 'https://images.unsplash.com/photo-1506057278219-795838d4c2dd?ixid=MXwxMjA3fDB8MHxzZWFyY2h8MjF8fGdyYWZpdHRpfGVufDB8fDB8&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60'
   },
   {
-    name: 'Вина бокал',
-    link: 'https://images.unsplash.com/photo-1547595628-c61a29f496f0?ixlib=rb-1.2.1&ixid=MXwxMjA3fDB8MHxzZWFyY2h8MTF8fHdpbmV8ZW58MHx8MHw%3D&auto=format&fit=crop&w=500&q=60'
+    name: 'Amor Livre',
+    link: 'https://images.unsplash.com/photo-1533239897665-b98ee3180b94?ixid=MXwxMjA3fDB8MHxzZWFyY2h8MTZ8fGdyYWZpdHRpfGVufDB8fDB8&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60'
   },
   {
-    name: 'Борщ',
-    link: 'https://images.unsplash.com/photo-1527976746453-f363eac4d889?ixlib=rb-1.2.1&ixid=MXwxMjA3fDB8MHxzZWFyY2h8MXx8cnVzc2lhbiUyMGZvb2R8ZW58MHx8MHw%3D&auto=format&fit=crop&w=500&q=60'
+    name: 'Équipe sous-marine Jacques-Yves Cousteau',
+    link: 'https://images.unsplash.com/photo-1520643090183-10be208fdd0e?ixid=MXwxMjA3fDB8MHxzZWFyY2h8NTN8fGdyYWZpdHRpfGVufDB8fDB8&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60'
   }
 ]; 
