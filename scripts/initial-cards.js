@@ -1,7 +1,7 @@
 export const initialCards = [
   {
-    name: 'Lusy',
-    link: 'https://images.unsplash.com/photo-1517776832751-0a7e6993de03?ixlib=rb-1.2.1&ixid=MXwxMjA3fDB8MHxzZWFyY2h8NHx8c3RyZWV0JTIwYXJ0fGVufDB8fDB8&auto=format&fit=crop&w=500&q=60'
+    name: 'COVID-19',
+    link: 'https://static.demilked.com/wp-content/uploads/2020/04/5e901b0719765-coronavirus-themed-street-art-around-the-world-coverimage.jpg'
   },
   {
     name: 'Océan Indien',
@@ -20,7 +20,7 @@ export const initialCards = [
     link: 'https://images.unsplash.com/photo-1533239897665-b98ee3180b94?ixid=MXwxMjA3fDB8MHxzZWFyY2h8MTZ8fGdyYWZpdHRpfGVufDB8fDB8&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60'
   },
   {
-    name: 'Équipe sous-marine Jacques-Yves Cousteau',
-    link: 'https://images.unsplash.com/photo-1520643090183-10be208fdd0e?ixid=MXwxMjA3fDB8MHxzZWFyY2h8NTN8fGdyYWZpdHRpfGVufDB8fDB8&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60'
+    name: 'Lusy',
+    link: 'https://images.unsplash.com/photo-1517776832751-0a7e6993de03?ixlib=rb-1.2.1&ixid=MXwxMjA3fDB8MHxzZWFyY2h8NHx8c3RyZWV0JTIwYXJ0fGVufDB8fDB8&auto=format&fit=crop&w=500&q=60'
   }
 ]; 

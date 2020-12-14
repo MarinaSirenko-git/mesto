@@ -2,7 +2,6 @@ export const user = document.querySelector('.user');
 export const name = user.querySelector('.user-info__name');
 export const career = user.querySelector('.user-info__career');
 
-export const popup = document.querySelector('.popup');
 export const visiblePopup = document.querySelector('.popup_opened');
 export const userInfoPopup = document.querySelector('.popup_type_user-info');
 export const userSubmitButton = userInfoPopup.querySelector('.popup__btn');

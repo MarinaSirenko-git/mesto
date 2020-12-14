@@ -1,3 +1,4 @@
+//импортируем константы
 import {
   name,
   career,
@@ -14,8 +15,10 @@ import {
   linkInput
 } from './../scripts/constants.js';
 
+//импортируем класс Card, для ф-ии создания карточки пользователем
 import {Card} from './../scripts/cards.js';
 
+//импортируем данные конфига
 import {validationConfig} from './../scripts/initial-validation.js';
 
 //Ф-я добавляет класс со стилями видимости, а также обработчики при клике на поле вокруг попапа или нажатии Esc
@@ -34,7 +37,7 @@ export function closePopup(element) {
 
 //Ф-я очищает input
 export function clearInput(element, config) {
-  const inputList = element.querySelectorAll('.popup__input');
+  const inputList = element.querySelectorAll(config.inputElement);
   const inputs = Array.from(inputList);
   inputs.forEach((input) => {
     const error = element.querySelector(`#${input.id}-error`);
