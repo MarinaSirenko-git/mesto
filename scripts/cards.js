@@ -1,54 +1,88 @@
+//Задача? 
+//Возможность сколько угодно генерировать однотипных карточек
 
-const cardsTemplate = document.querySelector('.cards__container').content;
+//Какие данные хранит класс Card?
+//Массив объектов, селектор template-элемента
 
-//ф-я получения разметки из template
-function createCard(card) {
-  const cardElement = cardsTemplate.cloneNode(true);
+//Какие методы будут приватными? 
+//Метод создающий элемент карточки и наполняющий её контентом, методы обрабатывающие события, методы слушающие события
 
-  const imageCloseButton = imageShowPopup.querySelector('.popup__close-icon_place_show-image');
-  const image = cardElement.querySelector('.cards__photo');
+//Какие методы будут публичными? 
+//Метод генерирующий готовую к публикации карточку
 
-  const imageCaption = imageShowPopup.querySelector('.popup__image-caption');
-  const imageLink = imageShowPopup.querySelector('.popup__fullsize-image');
+import {imageShowPopup} from './../scripts/constants.js';
+import {openPopup, closePopup} from './../scripts/popup.js';
 
-  cardElement.querySelector('.cards__photo').src = card.link;
-  cardElement.querySelector('.cards__photo').alt = card.name;
-  cardElement.querySelector('.cards__title').textContent = card.name;
-  
-  image.addEventListener('click', function() {
-    imageCaption.textContent = card.name;
-    imageLink.src = card.link;
-    imageLink.alt = card.name;
-    openPopup(imageShowPopup);
-  });
+export class Card {
+  constructor(data, cardSelector) {
+    this._name = data.name;
+    this._link = data.link;
+    this._cardSelector = cardSelector;
+  }
 
-  imageCloseButton.addEventListener('click', function() {
-    closePopup(imageShowPopup);
-  });
+  _getTemplate() {
+    const cardElement = document
+    .querySelector(this._cardSelector)
+    .content
+    .querySelector('.cards__item')
+    .cloneNode(true);
 
-  cardElement.querySelector('.cards__like-btn').addEventListener('click', function (evt) {
-    evt.target.classList.toggle('cards__like-btn_active');
-  });
+    return cardElement;
+  }
 
-  cardElement.querySelector('.cards__remove-btn').addEventListener('click', function (evt) {
-      const cardToDelete = evt.target.closest('.cards__item');
-      cardToDelete.remove();
+  generateCard() {
+    this._element = this._getTemplate();
+    this._setEventListeners();
+
+    const image = this._element.querySelector('.cards__photo');
+    const title = this._element.querySelector('.cards__title');
+
+    image.src = this._link;
+    image.alt = this._name;
+    title.textContent = this._name;
+
+    return this._element;
+  }
+
+  _setEventListeners() {
+    this._element.querySelector('.cards__like-btn').addEventListener('click', (evt) => {
+      this._handleLikeClick(evt);
     });
 
-  return cardElement;
+    this._element.querySelector('.cards__remove-btn').addEventListener('click', (evt) => {
+      this._handleDeleteClick(evt);
+    });
+
+    this._element.querySelector('.cards__photo').addEventListener('click', () => {
+			this._handleImageClick();
+    });
+    
+    imageShowPopup.querySelector('.popup__close-icon_place_show-image').addEventListener('click', () => {
+      this._handleCloseClick();
+    });
+
+  }
+
+  _handleLikeClick(evt) {
+    evt.target.classList.toggle('cards__like-btn_active');
+  }
+
+  _handleDeleteClick(evt) {
+    evt.target.closest('.cards__item').remove();
+  }
+
+  _handleImageClick() {
+    const caption = imageShowPopup.querySelector('.popup__image-caption');
+    const image = imageShowPopup.querySelector('.popup__fullsize-image');
+    caption.textContent = this._name;
+    image.src = this._link;
+    image.alt = this._name;
+    openPopup(imageShowPopup);
+  }
+
+  _handleCloseClick() {
+    closePopup(imageShowPopup);
+  }
 }
 
-const containerCards = document.querySelector('.cards');
-
-initialCards.forEach((element) => {
-  containerCards.appendChild(createCard(element));
-});
-
-//Ф-я добавления значений в новую карточку
-function addContentImage() {
-  const title = titleInput.value;
-  const link = linkInput.value;
-  const newCard = ({name: title, link: link});
-  containerCards.prepend(createCard(newCard));
-}
 
