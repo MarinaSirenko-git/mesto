@@ -5,7 +5,8 @@ import {
   userInfoPopup, 
   userSubmitButton, 
   imageAddPopup, 
-  imageSubmitButton, 
+  imageSubmitButton,
+  imageShowPopup, 
   cardsContainer,
   editUserForm,
   nameInput,
@@ -16,7 +17,7 @@ import {
 } from './../scripts/constants.js';
 
 //импортируем класс Card, для ф-ии создания карточки пользователем
-import {Card} from './../scripts/cards.js';
+import Card from './../scripts/cards.js';
 
 //импортируем данные конфига
 import {validationConfig} from './../scripts/initial-validation.js';
@@ -104,6 +105,11 @@ export function closeButtonAddImageClickHandler() {
   resetButton(imageAddPopup, validationConfig);
 }
 
+//Ф-я обработчик кнопки закрытия 
+export function closeButtonImageClickHandler() {
+  closePopup(imageShowPopup);
+}
+
 //Ф-я добавления значений полям
 export function addContentUser() {
   name.textContent = nameInput.value;
@@ -129,12 +135,22 @@ export function addImageFormSubmitHandler(evt) {
 }
 
 //Ф-я генерирующая новую карточку
-function addContentImage() {
+export function addContentImage() {
   const name = titleInput.value;
   const link = linkInput.value;
   const newCard = ({name, link});
 
-  const card = new Card(newCard, '.cards__container');
+  const card = new Card(newCard, '.cards__container', imageClickHandler);
   const cardElement = card.generateCard();
   cardsContainer.prepend(cardElement); 
+}
+
+//ф-я обработчик клика по картинке в карточке
+export function imageClickHandler(name, link) {
+  const caption = imageShowPopup.querySelector('.popup__image-caption');
+  const image = imageShowPopup.querySelector('.popup__fullsize-image');
+  caption.textContent = name;
+  image.src = link;
+  image.alt = name;
+  openPopup(imageShowPopup);
 }

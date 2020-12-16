@@ -5,36 +5,40 @@ import {
   addButton,
   closeUserPopupButton,
   closeAddImagePopupButton,
+  closeImagePopupButton,
   editUserForm,
   addImageForm
 } from './../scripts/constants.js';
 
 //импортируем массив для инициализации класса Card и класс Card
 import {initialCards} from './../scripts/initial-cards.js';
-import {Card} from './../scripts/cards.js';
-
-//генерируем карточки из массива
-initialCards.forEach((item) => {
-  const defaultCard = new Card(item, '.cards__container');
-  const cardElement = defaultCard.generateCard();
-  cardsContainer.append(cardElement);  
-});
+import Card from './../scripts/cards.js';
 
 //импортируем ф-ии-обработчики событий
 import {
   editButtonClickHandler,
   addButtonClickHandler,
+  imageClickHandler,
   closeButtonUserClickHandler,
   closeButtonAddImageClickHandler,
+  closeButtonImageClickHandler,
   editUserFormSubmitHandler,
   addImageFormSubmitHandler
 } from './../scripts/popup.js';
+
+//генерируем карточки из массива
+initialCards.forEach((item) => {
+  const defaultCard = new Card(item, '.cards__container', imageClickHandler);
+  const cardElement = defaultCard.generateCard();
+  cardsContainer.append(cardElement);  
+});
 
 //слушаем события
 editButton.addEventListener('click', editButtonClickHandler);
 addButton.addEventListener('click', addButtonClickHandler);
 closeUserPopupButton.addEventListener('click', closeButtonUserClickHandler);
 closeAddImagePopupButton.addEventListener('click', closeButtonAddImageClickHandler);
+closeImagePopupButton.addEventListener('click', closeButtonImageClickHandler);
 editUserForm.addEventListener('submit', editUserFormSubmitHandler);
 addImageForm.addEventListener('submit', addImageFormSubmitHandler);
 

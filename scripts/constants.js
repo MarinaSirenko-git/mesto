@@ -14,6 +14,7 @@ export const editButton = user.querySelector('.user-info__edit-icon');
 export const addButton = user.querySelector('.user-info__add-icon');
 export const closeUserPopupButton = userInfoPopup.querySelector('.popup__close-icon_place_user-info');
 export const closeAddImagePopupButton = imageAddPopup.querySelector('.popup__close-icon_place_add-image');
+export const closeImagePopupButton = imageShowPopup.querySelector('.popup__close-icon_place_show-image');
 
 export const editUserForm = document.forms['user-info'];
 export const nameInput = editUserForm.elements['user-name'];

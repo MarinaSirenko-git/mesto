@@ -1,7 +1,3 @@
-//импортируем константу и ф-и открытия/закрытия
-import {imageShowPopup} from './../scripts/constants.js';
-import {openPopup, closePopup} from './../scripts/popup.js';
-
 //задача? 
 //возможность сколько угодно генерировать однотипных карточек
 
@@ -13,11 +9,12 @@ import {openPopup, closePopup} from './../scripts/popup.js';
 
 //какие методы будут публичными? 
 //метод генерирующий готовую к публикации карточку
-export class Card {
-  constructor(data, cardSelector) {
+export default class Card {
+  constructor(data, cardSelector, imageClickHandler) {
     this._name = data.name;
     this._link = data.link;
     this._cardSelector = cardSelector;
+    this._imageClickHandler = imageClickHandler;
   }
 
   _getTemplate() {
@@ -45,44 +42,20 @@ export class Card {
   }
 
   _setEventListeners() {
-    this._element.querySelector('.cards__like-btn').addEventListener('click', (evt) => {
-      this._handleLikeClick(evt);
-    });
-
-    this._element.querySelector('.cards__remove-btn').addEventListener('click', (evt) => {
-      this._handleDeleteClick(evt);
-    });
-
+    this._element.querySelector('.cards__like-btn').addEventListener('click', this._handleLikeClick);
+    this._element.querySelector('.cards__remove-btn').addEventListener('click', this._handleDeleteClick);
     this._element.querySelector('.cards__photo').addEventListener('click', () => {
-			this._handleImageClick();
+			this._imageClickHandler(this._name, this._link);
     });
-    
-    imageShowPopup.querySelector('.popup__close-icon_place_show-image').addEventListener('click', () => {
-      this._handleCloseClick();
-    });
-
   }
 
   _handleLikeClick(evt) {
     evt.target.classList.toggle('cards__like-btn_active');
   }
 
-  _handleDeleteClick(evt) {
-    evt.target.closest('.cards__item').remove();
-  }
-
-  _handleImageClick() {
-    const caption = imageShowPopup.querySelector('.popup__image-caption');
-    const image = imageShowPopup.querySelector('.popup__fullsize-image');
-    caption.textContent = this._name;
-    image.src = this._link;
-    image.alt = this._name;
-    openPopup(imageShowPopup);
-  }
-
-  _handleCloseClick() {
-    closePopup(imageShowPopup);
-  }
+  _handleDeleteClick(evt) { 
+    evt.target.closest('.cards__item').remove(); 
+  } 
 }
 
 
