@@ -9,7 +9,7 @@
 
 //какие методы будут публичными? 
 //метод инициирующий валидацию формы
-export class FormValidator {
+export default class FormValidator {
   constructor(config, element) {
     this._element = element;
     this._inputElement = config.inputElement;

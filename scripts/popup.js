@@ -17,7 +17,7 @@ import {
 } from './../scripts/constants.js';
 
 //импортируем класс Card, для ф-ии создания карточки пользователем
-import Card from './../scripts/cards.js';
+import Card from './Card.js';
 
 //импортируем данные конфига
 import {validationConfig} from './../scripts/initial-validation.js';
@@ -117,8 +117,7 @@ export function addContentUser() {
 }
 
 //Ф-я обработчик события submit у кнопки
-export function editUserFormSubmitHandler(evt) {
-  evt.preventDefault();
+export function editUserFormSubmitHandler() {
   addContentUser();
   closePopup(userInfoPopup);
   editUserForm.reset();
@@ -126,12 +125,17 @@ export function editUserFormSubmitHandler(evt) {
 }
 
 //Ф-я обработчик события submit у кнопки
-export function addImageFormSubmitHandler(evt) {
-  evt.preventDefault();
+export function addImageFormSubmitHandler() {
   addContentImage();
   closePopup(imageAddPopup);
   addImageForm.reset();
   imageSubmitButton.classList.add('input__btn_inactive');
+}
+
+export function getCard(data, selector, handler) {
+  const card = new Card(data, selector, handler);
+  const cardElement = card.generateCard();
+  return cardElement;
 }
 
 //Ф-я генерирующая новую карточку
@@ -139,9 +143,7 @@ export function addContentImage() {
   const name = titleInput.value;
   const link = linkInput.value;
   const newCard = ({name, link});
-
-  const card = new Card(newCard, '.cards__container', imageClickHandler);
-  const cardElement = card.generateCard();
+  const cardElement = getCard(newCard, '.cards__container', imageClickHandler);
   cardsContainer.prepend(cardElement); 
 }
 
