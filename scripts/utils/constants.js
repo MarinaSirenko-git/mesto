@@ -1,3 +1,26 @@
+export const user = document.querySelector('.user');
+export const name = user.querySelector('.user-info__name');
+export const career = user.querySelector('.user-info__career');
+export const userInfoPopup = document.querySelector('.popup_type_user-info');
+export const imageAddPopup = document.querySelector('.popup_type_add-image');
+export const imageShowPopup = document.querySelector('.popup_type_show-image');
+export const editButton = user.querySelector('.user-info__edit-icon');
+export const addButton = user.querySelector('.user-info__add-icon');
+export const editUserForm = document.forms['user-info'];
+export const nameInput = editUserForm.elements['user-name'];
+export const careerInput = editUserForm.elements['user-career'];
+export const addImageForm = document.forms['add-image'];
+
+//конфиг для класса валидации
+export const validationConfig = {
+  inputElement: '.popup__input',
+  buttonElement: '.popup__btn',
+  inactiveButtonClass: 'input__btn_inactive',
+  inputErrorClass: 'popup__input_status_error',
+  errorClass: 'popup__input-error_active'
+};
+
+//данные для инициализации карточек
 export const initialCards = [
   {
     name: 'COVID-19',

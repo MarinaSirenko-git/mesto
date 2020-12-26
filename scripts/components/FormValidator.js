@@ -9,6 +9,7 @@
 
 //какие методы будут публичными? 
 //метод инициирующий валидацию формы
+//метод очищающий поля формы и ошибки при закрытии
 export default class FormValidator {
   constructor(config, element) {
     this._element = element;
@@ -61,6 +62,20 @@ export default class FormValidator {
         this._toggleButtonState(button, this._element.checkValidity());
       });
     });
+  }
+
+  clearForm() {
+    const inputList = this._element.querySelectorAll(this._inputElement);
+    const inputs = Array.from(inputList);
+    inputs.forEach((input) => {
+      this._hideInputError(input);
+      input.value = '';
+    });
+  }
+
+  inactiveButton() {
+    const button = this._element.querySelector(this._buttonElement);
+    button.classList.add(this._inactiveButtonClass);
   }
 
   enableValidation() {

@@ -10,11 +10,11 @@
 //какие методы будут публичными? 
 //метод генерирующий готовую к публикации карточку
 export default class Card {
-  constructor(data, cardSelector, imageClickHandler) {
+  constructor({data, handleCardClick}, cardSelector) {
     this._name = data.name;
     this._link = data.link;
     this._cardSelector = cardSelector;
-    this._imageClickHandler = imageClickHandler;
+    this._handleCardClick = handleCardClick;
   }
 
   _getTemplate() {
@@ -45,7 +45,7 @@ export default class Card {
     this._element.querySelector('.cards__like-btn').addEventListener('click', this._handleLikeClick);
     this._element.querySelector('.cards__remove-btn').addEventListener('click', this._handleDeleteClick);
     this._element.querySelector('.cards__photo').addEventListener('click', () => {
-			this._imageClickHandler(this._name, this._link);
+			this._handleCardClick();
     });
   }
 
