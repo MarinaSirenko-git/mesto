@@ -32,6 +32,11 @@ import PopupWithImage from '../components/PopupWithImage.js';
 import PopupWithForm from '../components/PopupWithForm.js';
 import UserInfo from '../components/UserInfo.js';
 
+//создать экземпляры класса
+const formAddValidator = new FormValidator(validationConfig, addImageForm);
+const formEditValidator = new FormValidator(validationConfig, editUserForm);
+const userInfo = new UserInfo(name, career);
+
 //через слой Section, создать экземпляр у класса Card, а внутри передаваемой ф-ии экземпляр PopupWithImage
 const cardList = new Section({
   data: initialCards,
@@ -53,13 +58,10 @@ cardList.renderElement();
 
 //по клику на кнопку редактирования создать экземпляр класса PopupWithForm, а внутри передаваемой ф-ии экземпляр UserInfo
 function editButtonClickHandler() {
-  const userInfo = new UserInfo(name, career);
   addContentUserPopup(userInfo.getUserInfo());
-
   const userPopup = new PopupWithForm({
     popupSelector: userInfoPopup,
     handleFormReset: () => {
-      const formEditValidator = new FormValidator(validationConfig, editUserForm);
       formEditValidator.clearForm();
     },
     handleFormSubmit: (inputValues) => {
@@ -68,11 +70,9 @@ function editButtonClickHandler() {
       userPopup.closePopup();
     }
   });
-
   userPopup.openPopup();
   userPopup.setEventListeners();
   userPopup.setEventListenersToDelete();
-  const formEditValidator = new FormValidator(validationConfig, editUserForm);
   formEditValidator.enableValidation();
   formEditValidator.inactiveButton();
 }
@@ -84,7 +84,6 @@ function addButtonClickHandler() {
   const addImagePopup = new PopupWithForm({
     popupSelector: imageAddPopup,
     handleFormReset: () => {
-      const formAddValidator = new FormValidator(validationConfig, addImageForm);
       formAddValidator.clearForm();
     },
     handleFormSubmit: (inputValues) => {
@@ -103,7 +102,6 @@ function addButtonClickHandler() {
     addImagePopup.openPopup();
     addImagePopup.setEventListeners();
     addImagePopup.setEventListenersToDelete();
-    const formAddValidator = new FormValidator(validationConfig, addImageForm);
     formAddValidator.enableValidation();
     formAddValidator.inactiveButton();
 }
