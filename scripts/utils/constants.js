@@ -7,8 +7,8 @@ export const imageShowPopup = document.querySelector('.popup_type_show-image');
 export const editButton = user.querySelector('.user-info__edit-icon');
 export const addButton = user.querySelector('.user-info__add-icon');
 export const editUserForm = document.forms['user-info'];
-export const nameInput = editUserForm.elements['user-name'];
-export const careerInput = editUserForm.elements['user-career'];
+export const nameInput = document.querySelector('.popup__input_type_name');
+export const careerInput = document.querySelector('.popup__input_type_career');
 export const addImageForm = document.forms['add-image'];
 
 //конфиг для класса валидации

@@ -49,18 +49,17 @@ function editButtonClickHandler() {
   addContentUserPopup(userInfo.getUserInfo());
   const userPopup = new PopupWithForm({
     popupSelector: userInfoPopup,
+    handleFormSubmit: (inputValues) => {
+      userInfo.setUserInfo(inputValues);
+      userPopup.closePopup();
+      userPopup.setEventListenersToDelete();
+    },
     handleFormReset: () => {
       formEditValidator.clearForm();
-    },
-    handleFormSubmit: (inputValues) => {
-      const dataInput = {nameUser: inputValues['user-name'], career: inputValues['user-career']};
-      userInfo.setUserInfo(dataInput);
-      userPopup.closePopup();
     }
   });
   userPopup.openPopup();
   userPopup.setEventListeners();
-  userPopup.setEventListenersToDelete();
   formEditValidator.enableValidation();
   formEditValidator.inactiveButton();
 }
@@ -78,11 +77,12 @@ function addButtonClickHandler() {
       const dataInput = {name: inputValues['photo-title'], link: inputValues['photo-link']};
       const card = createCard(dataInput, popup, '.cards__container');
         addImagePopup.closePopup();
+        addImagePopup.resetForm();
+        addImagePopup.setEventListenersToDelete();
         cardList.insertElementPrepend(card.generateCard());
     }});
     addImagePopup.openPopup();
     addImagePopup.setEventListeners();
-    addImagePopup.setEventListenersToDelete();
     formAddValidator.enableValidation();
     formAddValidator.inactiveButton();
 }
