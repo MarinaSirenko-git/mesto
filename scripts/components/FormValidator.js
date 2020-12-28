@@ -1,18 +1,8 @@
-//задача? 
-//настроить валидацию полей формы и состояние кнопки
 
-//какие данные хранит класс FormValidator?
-//объект с селекторами и классами, елемент формы
-
-//какие методы будут приватными? 
-//методы, которые обрабатывают форму: проверяют валидность поля, изменяют состояние кнопки сабмита, устанавливают все обработчики
-
-//какие методы будут публичными? 
-//метод инициирующий валидацию формы
-//метод очищающий поля формы и ошибки при закрытии
 export default class FormValidator {
   constructor(config, element) {
     this._element = element;
+    this._inputList = Array.from(element.querySelectorAll(config.inputElement));
     this._inputElement = config.inputElement;
     this._buttonElement = config.buttonElement;
     this._inactiveButtonClass = config.inactiveButtonClass;
@@ -51,12 +41,10 @@ export default class FormValidator {
   }
 
   _setInputListeners() {
-    const inputsArr = Array.from(this._element.querySelectorAll(this._inputElement));
-
     const button = this._element.querySelector(this._buttonElement);
     this._toggleButtonState(button, this._element.checkValidity());
   
-    inputsArr.forEach((input) => {
+    this._inputList.forEach((input) => {
       input.addEventListener('input', () => {
         this._checkInputValidity(input);
         this._toggleButtonState(button, this._element.checkValidity());
@@ -65,8 +53,7 @@ export default class FormValidator {
   }
 
   clearForm() {
-    const inputList = this._element.querySelectorAll(this._inputElement);
-    const inputs = Array.from(inputList);
+    const inputs = Array.from(this._inputList);
     inputs.forEach((input) => {
       this._hideInputError(input);
       input.value = '';
