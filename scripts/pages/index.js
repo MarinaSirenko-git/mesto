@@ -1,9 +1,3 @@
-// Уважаемый, Кирилл :) Та ошибка, где обработчик события не удалялся, подразумевала передеделку много чего ещё.
-// И я подумала - да, реализую Popup через класс. А потом меня уже было не остановить)
-// Если это не совсем по правилам, я сохранила ветку с изначальным кодом
-
-
-
 //импортировать константы
 import {
   name,
@@ -21,13 +15,13 @@ import {
 import { initialCards } from '../utils/constants.js';
 import { validationConfig } from '../utils/constants.js';
 
-//импорт отдельной ф-ии
+//импортировать отдельные ф-ии
 import { addContentUserPopup } from '../utils/utils.js';
+import { createCard } from '../utils/utils.js';
 
 //импортировать классы
 import FormValidator from '../components/FormValidator.js';
 import Section from '../components/Section.js';
-import Card from '../components/Card.js';
 import PopupWithImage from '../components/PopupWithImage.js';
 import PopupWithForm from '../components/PopupWithForm.js';
 import UserInfo from '../components/UserInfo.js';
@@ -38,18 +32,11 @@ const formEditValidator = new FormValidator(validationConfig, editUserForm);
 const userInfo = new UserInfo(name, career);
 const popup = new PopupWithImage(imageShowPopup);
 
-
 //через слой Section, создать экземпляр у класса Card, а внутри передаваемой ф-ии экземпляр PopupWithImage
 const cardList = new Section({
   data: initialCards,
   renderer: (item) => {
-    const card = new Card({
-      data: item,
-      handleCardClick: () => {
-        popup.openPopup(item);
-        popup.setEventListeners();
-        popup.setEventListenersToDelete();
-      }}, '.cards__container');
+    const card = createCard(item, popup, '.cards__container');
     cardList.insertElementAppend(card.generateCard());
   }
 }, '.cards');
@@ -89,14 +76,7 @@ function addButtonClickHandler() {
     },
     handleFormSubmit: (inputValues) => {
       const dataInput = {name: inputValues['photo-title'], link: inputValues['photo-link']};
-      const card = new Card({
-        data: dataInput,
-        handleCardClick: () => {
-          const popup = new PopupWithImage(dataInput, imageShowPopup);
-          popup.openPopup();
-          popup.setEventListeners();
-          popup.setEventListenersToDelete();
-        }}, '.cards__container');
+      const card = createCard(dataInput, popup, '.cards__container');
         addImagePopup.closePopup();
         cardList.insertElementPrepend(card.generateCard());
     }});
