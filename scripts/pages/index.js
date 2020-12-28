@@ -36,6 +36,8 @@ import UserInfo from '../components/UserInfo.js';
 const formAddValidator = new FormValidator(validationConfig, addImageForm);
 const formEditValidator = new FormValidator(validationConfig, editUserForm);
 const userInfo = new UserInfo(name, career);
+const popup = new PopupWithImage(imageShowPopup);
+
 
 //через слой Section, создать экземпляр у класса Card, а внутри передаваемой ф-ии экземпляр PopupWithImage
 const cardList = new Section({
@@ -44,8 +46,7 @@ const cardList = new Section({
     const card = new Card({
       data: item,
       handleCardClick: () => {
-        const popup = new PopupWithImage(item, imageShowPopup);
-        popup.openPopup();
+        popup.openPopup(item);
         popup.setEventListeners();
         popup.setEventListenersToDelete();
       }}, '.cards__container');
