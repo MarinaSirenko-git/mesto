@@ -1,14 +1,3 @@
-//задача? 
-//возможность сколько угодно генерировать однотипных карточек
-
-//какие данные хранит класс Card?
-//массив объектов, селектор template-элемента
-
-//какие методы будут приватными? 
-//метод создающий элемент карточки и наполняющий её контентом, методы обрабатывающие события, методы слушающие события
-
-//какие методы будут публичными? 
-//метод генерирующий готовую к публикации карточку
 export default class Card {
   constructor({data, handleCardClick}, cardSelector) {
     this._name = data.name;
@@ -18,13 +7,11 @@ export default class Card {
   }
 
   _getTemplate() {
-    const cardElement = document
+    return document
     .querySelector(this._cardSelector)
     .content
     .querySelector('.cards__item')
     .cloneNode(true);
-
-    return cardElement;
   }
 
   generateCard() {
@@ -43,7 +30,7 @@ export default class Card {
 
   _setEventListeners() {
     this._element.querySelector('.cards__like-btn').addEventListener('click', this._handleLikeClick);
-    this._element.querySelector('.cards__remove-btn').addEventListener('click', this._handleDeleteClick);
+    this._element.querySelector('.cards__remove-btn').addEventListener('click', () => this._handleDeleteClick());
     this._element.querySelector('.cards__photo').addEventListener('click', () => {
 			this._handleCardClick();
     });
@@ -53,8 +40,8 @@ export default class Card {
     evt.target.classList.toggle('cards__like-btn_active');
   }
 
-  _handleDeleteClick(evt) { 
-    evt.target.closest('.cards__item').remove(); 
+  _handleDeleteClick() { 
+    this._element.remove(); 
   } 
 }
 
