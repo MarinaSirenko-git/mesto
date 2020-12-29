@@ -44,43 +44,47 @@ const cardList = new Section({
 //отрисовать на странице
 cardList.renderElement();
 
-//по клику на кнопку редактирования создать экземпляр класса PopupWithForm, а внутри передаваемой ф-ии экземпляр UserInfo
+//вынести создание экземпляра из ф-ии обработчика
+const userPopup = new PopupWithForm({
+  popupSelector: userInfoPopup,
+  handleFormSubmit: (inputValues) => {
+    userInfo.setUserInfo(inputValues);
+    userPopup.closePopup();
+  },
+  handleFormReset: () => {
+    formEditValidator.clearForm();
+  }
+});
+
+//вынести инициализацию метода из ф-ии обработчика
+userPopup.submitEventListener();
+
+//обработчик
 function editButtonClickHandler() {
   addContentUserPopup(userInfo.getUserInfo());
-  const userPopup = new PopupWithForm({
-    popupSelector: userInfoPopup,
-    handleFormSubmit: (inputValues) => {
-      userInfo.setUserInfo(inputValues);
-      userPopup.closePopup();
-      userPopup.setEventListenersToDelete();
-    },
-    handleFormReset: () => {
-      formEditValidator.clearForm();
-    }
-  });
   userPopup.openPopup();
   userPopup.setEventListeners();
   formEditValidator.enableValidation();
   formEditValidator.inactiveButton();
 }
 
+//слушать событие
 editButton.addEventListener('click', editButtonClickHandler);
 
-//по клику на кнопку добавления создать экземпляр класса PopupWithForm, в передаваемой ф-ии создать экземпляр у класса Card, передать ф-ий экземпляр PopupWithImage
+const addImagePopup = new PopupWithForm({
+  popupSelector: imageAddPopup,
+  handleFormReset: () => {
+    formAddValidator.clearForm();
+  },
+  handleFormSubmit: (inputValues) => {
+    const card = createCard(inputValues, popup, '.cards__container');
+      addImagePopup.closePopup();
+      addImagePopup.resetForm();
+      cardList.insertElementPrepend(card.generateCard());
+  }});
+addImagePopup.submitEventListener();
+
 function addButtonClickHandler() {
-  const addImagePopup = new PopupWithForm({
-    popupSelector: imageAddPopup,
-    handleFormReset: () => {
-      formAddValidator.clearForm();
-    },
-    handleFormSubmit: (inputValues) => {
-      const dataInput = {name: inputValues['photo-title'], link: inputValues['photo-link']};
-      const card = createCard(dataInput, popup, '.cards__container');
-        addImagePopup.closePopup();
-        addImagePopup.resetForm();
-        addImagePopup.setEventListenersToDelete();
-        cardList.insertElementPrepend(card.generateCard());
-    }});
     addImagePopup.openPopup();
     addImagePopup.setEventListeners();
     formAddValidator.enableValidation();
