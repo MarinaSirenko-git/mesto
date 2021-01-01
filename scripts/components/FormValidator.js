@@ -59,7 +59,11 @@ export default class FormValidator {
   }
 
   inactiveButton() {
-    this._buttonElement.classList.add(this._inactiveButtonClass);
+    this._inputList.forEach((input) => {
+      if(input.value === "") {
+        this._buttonElement.classList.add(this._inactiveButtonClass);
+      }
+    });
   }
 
   enableValidation() {

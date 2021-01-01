@@ -1,4 +1,3 @@
-//импортировать константы
 import {
   name,
   career,
@@ -9,42 +8,50 @@ import {
   imageShowPopup,
   userInfoPopup,
   imageAddPopup,
+  careerInput,
+  nameInput
 } from '../utils/constants.js';
 
-//импортировать данные для инициализации класса Card и класса FormValidator
 import { initialCards } from '../utils/constants.js';
 import { validationConfig } from '../utils/constants.js';
 
-//импортировать отдельные ф-ии
-import { addContentUserPopup } from '../utils/utils.js';
-import { createCard } from '../utils/utils.js';
-
-//импортировать классы
 import FormValidator from '../components/FormValidator.js';
 import Section from '../components/Section.js';
 import PopupWithImage from '../components/PopupWithImage.js';
 import PopupWithForm from '../components/PopupWithForm.js';
 import UserInfo from '../components/UserInfo.js';
+import Card from '../components/Card.js';
 
-//создать экземпляры класса
+function addContentUserPopup(data) {
+  nameInput.value = data.name;
+  careerInput.value = data.career;
+}
+
+function createCard(data, instance, containerSelector) {
+  const instanceCard = new Card({
+    data: data,
+    handleCardClick: () => {
+      instance.openPopup(data);
+      instance.setEventListeners();
+    }}, containerSelector);
+    return instanceCard.generateCard();
+}
+
 const formAddValidator = new FormValidator(validationConfig, addImageForm);
 const formEditValidator = new FormValidator(validationConfig, editUserForm);
 const userInfo = new UserInfo(name, career);
 const popup = new PopupWithImage(imageShowPopup);
 
-//через слой Section, создать экземпляр у класса Card, а внутри передаваемой ф-ии экземпляр PopupWithImage
 const cardList = new Section({
   data: initialCards,
   renderer: (item) => {
     const card = createCard(item, popup, '.cards__container');
-    cardList.insertElementAppend(card.generateCard());
+    cardList.insertElementAppend(card);
   }
 }, '.cards');
 
-//отрисовать на странице
 cardList.renderElement();
 
-//вынести создание экземпляра из ф-ии обработчика
 const userPopup = new PopupWithForm({
   popupSelector: userInfoPopup,
   handleFormSubmit: (inputValues) => {
@@ -56,10 +63,8 @@ const userPopup = new PopupWithForm({
   }
 });
 
-//вынести инициализацию метода из ф-ии обработчика
 userPopup.submitEventListener();
 
-//обработчик
 function editButtonClickHandler() {
   addContentUserPopup(userInfo.getUserInfo());
   userPopup.openPopup();
@@ -68,7 +73,6 @@ function editButtonClickHandler() {
   formEditValidator.inactiveButton();
 }
 
-//слушать событие
 editButton.addEventListener('click', editButtonClickHandler);
 
 const addImagePopup = new PopupWithForm({
@@ -77,10 +81,10 @@ const addImagePopup = new PopupWithForm({
     formAddValidator.clearForm();
   },
   handleFormSubmit: (inputValues) => {
-    const card = createCard(inputValues, popup, '.cards__container');
       addImagePopup.closePopup();
       addImagePopup.resetForm();
-      cardList.insertElementPrepend(card.generateCard());
+      const card = createCard(inputValues, popup, '.cards__container');
+      cardList.insertElementPrepend(card);
   }});
 addImagePopup.submitEventListener();
 
