@@ -69,10 +69,10 @@ function editButtonClickHandler() {
   addContentUserPopup(userInfo.getUserInfo());
   userPopup.openPopup();
   userPopup.setEventListeners();
-  formEditValidator.enableValidation();
   formEditValidator.inactiveButton();
 }
 
+formEditValidator.enableValidation();
 editButton.addEventListener('click', editButtonClickHandler);
 
 const addImagePopup = new PopupWithForm({
@@ -81,18 +81,18 @@ const addImagePopup = new PopupWithForm({
     formAddValidator.clearForm();
   },
   handleFormSubmit: (inputValues) => {
-      addImagePopup.closePopup();
-      addImagePopup.resetForm();
-      const card = createCard(inputValues, popup, '.cards__container');
-      cardList.insertElementPrepend(card);
+    addImagePopup.closePopup();
+    addImagePopup.resetForm();
+    const card = createCard(inputValues, popup, '.cards__container');
+    cardList.insertElementPrepend(card);
   }});
 addImagePopup.submitEventListener();
 
 function addButtonClickHandler() {
-    addImagePopup.openPopup();
-    addImagePopup.setEventListeners();
-    formAddValidator.enableValidation();
-    formAddValidator.inactiveButton();
+  addImagePopup.openPopup();
+  addImagePopup.setEventListeners();
+  formAddValidator.inactiveButton();
 }
 
+formAddValidator.enableValidation();
 addButton.addEventListener('click', addButtonClickHandler);

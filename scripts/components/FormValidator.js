@@ -1,4 +1,3 @@
-
 export default class FormValidator {
   constructor(config, element) {
     this._element = element;
@@ -32,21 +31,20 @@ export default class FormValidator {
     }
   }
 
-  _toggleButtonState(button, isActive) {
+  _toggleButtonState(isActive) {
     if (isActive) {
-      button.classList.remove(this._inactiveButtonClass);
+      this._buttonElement.classList.remove(this._inactiveButtonClass);
     } else {
-      button.classList.add(this._inactiveButtonClass);
+      this._buttonElement.classList.add(this._inactiveButtonClass);
     }
   }
 
   _setInputListeners() {
-    this._toggleButtonState(this._buttonElement, this._element.checkValidity());
-  
+    this._toggleButtonState(this._element.checkValidity());
     this._inputList.forEach((input) => {
       input.addEventListener('input', () => {
         this._checkInputValidity(input);
-        this._toggleButtonState(this._buttonElement, this._element.checkValidity());
+        this._toggleButtonState(this._element.checkValidity());
       });
     });
   }
