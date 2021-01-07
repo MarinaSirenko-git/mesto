@@ -1,3 +1,5 @@
+import '/src/pages/index.css';
+
 import {
   name,
   career,
@@ -86,6 +88,7 @@ const addImagePopup = new PopupWithForm({
     const card = createCard(inputValues, popup, '.cards__container');
     cardList.insertElementPrepend(card);
   }});
+  
 addImagePopup.submitEventListener();
 
 function addButtonClickHandler() {

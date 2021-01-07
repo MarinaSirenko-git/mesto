@@ -57,6 +57,7 @@ export default class FormValidator {
   }
 
   inactiveButton() {
+    this._setInputListeners();
     this._inputList.forEach((input) => {
       if(input.value === "") {
         this._buttonElement.classList.add(this._inactiveButtonClass);

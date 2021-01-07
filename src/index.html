@@ -6,12 +6,11 @@
   <title>Место</title>
   <meta name="description" content="Интересные места в России">
   <meta name="author" content="Марина Сиренко">
-  <link rel="stylesheet" href="./pages/index.css">
 </head>
 <body class="page">
   <div class="page__content">
     <header class="header page__header">
-      <img class="header__logo" src="./images/logo.svg" alt="лого Mesto Russia">
+      <img class="header__logo" src="<%=require('./images/logo.svg')%>" alt="лого Mesto Russia">
     </header>
     <main class="content page__main">
       <section class="user">
@@ -70,13 +69,12 @@
   <template class="cards__container">
     <li class="cards__item">
       <button class="cards__remove-btn" type="button"></button>
-      <img class="cards__photo" src="./images/karachayevsk.jpg" alt="Загруженное изображение">
+      <img class="cards__photo" src="#" alt="Загруженное изображение">
       <div class="cards__caption">
         <h2 class="cards__title">Карачаевск</h2>
         <button class="cards__like-btn" aria-label="Поставить лайк" type="button"></button>
       </div>
     </li>
   </template>
-  <script type="module" src="./scripts/pages/index.js"></script>
 </body>
 </html>
