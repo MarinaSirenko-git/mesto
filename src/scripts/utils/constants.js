@@ -1,9 +1,4 @@
 export const user = document.querySelector('.user');
-export const name = user.querySelector('.user-info__name');
-export const career = user.querySelector('.user-info__career');
-export const userInfoPopup = document.querySelector('.popup_type_user-info');
-export const imageAddPopup = document.querySelector('.popup_type_add-image');
-export const imageShowPopup = document.querySelector('.popup_type_show-image');
 export const editButton = user.querySelector('.user-info__edit-icon');
 export const addButton = user.querySelector('.user-info__add-icon');
 export const editUserForm = document.forms['user-info'];

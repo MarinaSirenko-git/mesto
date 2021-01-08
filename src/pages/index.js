@@ -1,28 +1,23 @@
-import '/src/pages/index.css';
+import './index.css';
 
 import {
-  name,
-  career,
   editButton,
   addButton,
   editUserForm,
   addImageForm,
-  imageShowPopup,
-  userInfoPopup,
-  imageAddPopup,
   careerInput,
   nameInput
-} from '../utils/constants.js';
+} from '../scripts/utils/constants.js';
 
-import { initialCards } from '../utils/constants.js';
-import { validationConfig } from '../utils/constants.js';
+import { initialCards } from '../scripts/utils/constants.js';
+import { validationConfig } from '../scripts/utils/constants.js';
 
-import FormValidator from '../components/FormValidator.js';
-import Section from '../components/Section.js';
-import PopupWithImage from '../components/PopupWithImage.js';
-import PopupWithForm from '../components/PopupWithForm.js';
-import UserInfo from '../components/UserInfo.js';
-import Card from '../components/Card.js';
+import FormValidator from '../scripts/components/FormValidator.js';
+import Section from '../scripts/components/Section.js';
+import PopupWithImage from '../scripts/components/PopupWithImage.js';
+import PopupWithForm from '../scripts/components/PopupWithForm.js';
+import UserInfo from '../scripts/components/UserInfo.js';
+import Card from '../scripts/components/Card.js';
 
 function addContentUserPopup(data) {
   nameInput.value = data.name;
@@ -33,69 +28,69 @@ function createCard(data, instance, containerSelector) {
   const instanceCard = new Card({
     data: data,
     handleCardClick: () => {
-      instance.openPopup(data);
+      instance.open(data);
       instance.setEventListeners();
     }}, containerSelector);
     return instanceCard.generateCard();
 }
 
 const formAddValidator = new FormValidator(validationConfig, addImageForm);
+formAddValidator.enableValidation();
+
 const formEditValidator = new FormValidator(validationConfig, editUserForm);
-const userInfo = new UserInfo(name, career);
-const popup = new PopupWithImage(imageShowPopup);
+formEditValidator.enableValidation();
+
+const userInfo = new UserInfo('.user-info__name', '.user-info__career');
+
+const imagePopup = new PopupWithImage('.popup_type_show-image');
+imagePopup.setEventListeners();
 
 const cardList = new Section({
   data: initialCards,
   renderer: (item) => {
-    const card = createCard(item, popup, '.cards__container');
+    const card = createCard(item, imagePopup, '.cards__container');
     cardList.insertElementAppend(card);
   }
 }, '.cards');
 
-cardList.renderElement();
+cardList.renderElements();
 
 const userPopup = new PopupWithForm({
-  popupSelector: userInfoPopup,
+  popupSelector: '.popup_type_user-info',
   handleFormSubmit: (inputValues) => {
     userInfo.setUserInfo(inputValues);
-    userPopup.closePopup();
+    userPopup.close();
   },
   handleFormReset: () => {
     formEditValidator.clearForm();
   }
 });
-
-userPopup.submitEventListener();
+userPopup.setEventListeners();
 
 function editButtonClickHandler() {
   addContentUserPopup(userInfo.getUserInfo());
-  userPopup.openPopup();
-  userPopup.setEventListeners();
-  formEditValidator.inactiveButton();
+  userPopup.open(); 
+  formEditValidator.changeButtonState();
 }
 
-formEditValidator.enableValidation();
 editButton.addEventListener('click', editButtonClickHandler);
 
 const addImagePopup = new PopupWithForm({
-  popupSelector: imageAddPopup,
+  popupSelector: '.popup_type_add-image',
   handleFormReset: () => {
     formAddValidator.clearForm();
   },
   handleFormSubmit: (inputValues) => {
-    addImagePopup.closePopup();
+    addImagePopup.close();
     addImagePopup.resetForm();
-    const card = createCard(inputValues, popup, '.cards__container');
+    const card = createCard(inputValues, imagePopup, '.cards__container');
     cardList.insertElementPrepend(card);
   }});
-  
-addImagePopup.submitEventListener();
+addImagePopup.setEventListeners();
 
 function addButtonClickHandler() {
-  addImagePopup.openPopup();
-  addImagePopup.setEventListeners();
-  formAddValidator.inactiveButton();
+  addImagePopup.open();
+  formAddValidator.changeButtonState();
 }
 
-formAddValidator.enableValidation();
 addButton.addEventListener('click', addButtonClickHandler);

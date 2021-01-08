@@ -1,44 +1,38 @@
 export default class Popup {
   constructor(popupSelector) {
-    this._element = popupSelector;
-    this._closeBtnHandler = this._handleBtnClose.bind(this);
-    this._closeEscHandler = this._handleSpaceClose.bind(this);
-    this._closeSpaceHandler = this._handleEscClose.bind(this);
+    this._element = document.querySelector(popupSelector);
+    this._handleBtnClose = this._handleBtnClose.bind(this);
+    this._handleOverlayClose = this._handleOverlayClose.bind(this);
+    this._handleEscClose = this._handleEscClose.bind(this);
   }
 
-  openPopup() {
+  open() {
     this._element.classList.add('popup_opened');
+    document.addEventListener('keydown', this._handleEscClose);
   }
 
-  closePopup() {
+  close() {
     this._element.classList.remove('popup_opened');
-    this._setEventListenersToDelete();
+    document.removeEventListener('keydown', this._handleEscClose);
   }
 
   setEventListeners() {
-    this._element.querySelector('.popup__close-icon').addEventListener('click', this._closeBtnHandler);
-    this._element.addEventListener('mousedown', this._closeEscHandler);
-    document.addEventListener('keydown', this._closeSpaceHandler);
-  }
-
-  _setEventListenersToDelete() {
-    this._element.querySelector('.popup__close-icon').removeEventListener('click', this._closeBtnHandler);
-    this._element.removeEventListener('mousedown', this._closeEscHandler);
-    document.removeEventListener('keydown', this._closeSpaceHandler);
+    this._element.querySelector('.popup__close-icon').addEventListener('click', this._handleBtnClose);
+    this._element.addEventListener('mousedown', this._handleOverlayClose);  
   }
 
   _handleBtnClose() {
-    this.closePopup();
+    this.close();
 }
 
   _handleEscClose(evt) {
     if ((evt.key) === 'Escape') {
-    this.closePopup();
+    this.close();
   }}
 
-  _handleSpaceClose(evt) {
+  _handleOverlayClose(evt) {
     if (evt.target.classList.contains('popup')) {
-    this.closePopup();
+    this.close();
   }}
 
 }
