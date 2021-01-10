@@ -29,7 +29,6 @@ function createCard(data, instance, containerSelector) {
     data: data,
     handleCardClick: () => {
       instance.open(data);
-      instance.setEventListeners();
     }}, containerSelector);
     return instanceCard.generateCard();
 }

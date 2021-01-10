@@ -58,11 +58,6 @@ export default class FormValidator {
 
   changeButtonState() {
     this._toggleButtonState(this._element.checkValidity());
-    this._inputList.forEach((input) => {
-      if(input.value === "") {
-        this._buttonElement.classList.add(this._inactiveButtonClass);
-      }
-    });
   }
 
   enableValidation() {
