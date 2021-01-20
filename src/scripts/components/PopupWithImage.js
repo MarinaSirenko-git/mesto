@@ -13,5 +13,4 @@ export default class PopupWithImage extends Popup {
     this._cardTitle.textContent = data.name;
     super.open();
   }
-
 }

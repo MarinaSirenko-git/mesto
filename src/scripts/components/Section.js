@@ -1,6 +1,5 @@
 export default class Section {
-  constructor({data, renderer}, containerSelector) {
-    this._renderedElements = data;
+  constructor({ renderer }, containerSelector) {
     this._container = document.querySelector(containerSelector);
     this._renderer = renderer;
   }
@@ -13,8 +12,8 @@ export default class Section {
     this._container.prepend(element);
   }
 
-  renderElements() {
-    this._renderedElements.forEach(element => {
+  renderElements(items) {
+    items.forEach(element => {
       this._renderer(element);
     });
   }

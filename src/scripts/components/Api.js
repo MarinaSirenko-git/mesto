@@ -2,6 +2,7 @@ export default class Api {
   constructor(options) {
     this._baseUrl = options.baseUrl;
     this._token = options.headers.authorization;
+
   }
 
   getInitialCards() {
@@ -10,10 +11,11 @@ export default class Api {
         authorization: this._token
       }
     })
-    .then(res => res.json())
-    .then((result) => {
-      console.log(result);
-    });
+    .then(result => 
+      result.ok ? 
+      result.json() : 
+      Promise.reject(`Ошибка ${result.status}`)
+    )
   }
 
   getUserData() {
@@ -22,13 +24,14 @@ export default class Api {
         authorization: this._token
       }
     })
-    .then(res => res.json())
-    .then((result) => {
-      console.log(result);
-    });
+    .then(result => 
+      result.ok ? 
+      result.json() : 
+      Promise.reject(`Ошибка ${result.status}`)
+    )
   }
 
-  updateUserData() {
+  updateUserData(data) {
     return fetch(`${this._baseUrl}/users/me`, {
       method: 'PATCH',
       headers: {
@@ -36,13 +39,36 @@ export default class Api {
         'Content-Type': 'application/json'
       },
       body: JSON.stringify({
-        name: 'Test',
-        about: 'Test'
+        name: data.name,
+        about: data.career
       })
     })
+    .then(result => 
+      result.ok ? 
+      result.json() : 
+      Promise.reject(`Ошибка ${result.status}`)
+    )
   }
 
-  addNewCard() {
+  updateAvatar(data) {
+    return fetch(`${this._baseUrl}/users/me/avatar`, {
+      method: 'PATCH',
+      headers: {
+        authorization: this._token,
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        avatar: data.link
+      })
+    })
+    .then(result => 
+      result.ok ? 
+      result.json() : 
+      Promise.reject(`Ошибка ${result.status}`)
+    )
+  }
+
+  addNewCard(data) {
     return fetch(`${this._baseUrl}/cards`, {
       method: 'POST',
       headers: {
@@ -50,10 +76,57 @@ export default class Api {
         'Content-Type': 'application/json'
       },
       body: JSON.stringify({
-        name: 'NewCard',
-        link: 'https://i.pinimg.com/originals/77/37/56/773756911f17695b6adc887a351d245f.jpg'
+        name: data.name,
+        link: data.link
       })
     })
+    .then(result => 
+      result.ok ? 
+      result.json() : 
+      Promise.reject(`Ошибка ${result.status}`)
+    )
   }
-  
+
+  removeCard(_id) {
+    return fetch(`${this._baseUrl}/cards/${_id}`, {
+      method: 'DELETE',
+      headers: {
+        authorization: this._token
+      }
+    })
+    .then(result => 
+      result.ok ? 
+      result.json() : 
+      Promise.reject(`Ошибка ${result.status}`)
+    )
+  }
+
+  doLike(_id) {
+    return fetch(`${this._baseUrl}/cards/likes/${_id}`, {
+      method: 'PUT',
+      headers: {
+        authorization: this._token
+      }
+    })
+    .then(result => 
+      result.ok ? 
+      result.json() : 
+      Promise.reject(`Ошибка ${result.status}`)
+    )
+  }
+
+  removeLike(_id) {
+    return fetch(`${this._baseUrl}/cards/likes/${_id}`, {
+      method: 'DELETE',
+      headers: {
+        authorization: this._token
+      }
+    })
+    .then(result => 
+      result.ok ? 
+      result.json() : 
+      Promise.reject(`Ошибка ${result.status}`)
+    )
+  }
+
 }
