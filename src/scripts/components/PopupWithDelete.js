@@ -1,6 +1,6 @@
 import Popup from './Popup.js';
 
-export default class PopupWithoutInput extends Popup {
+export default class PopupWithDelete extends Popup {
   constructor(popupSelector) {
     super(popupSelector);
     this._form = this._element.querySelector('.popup__container');
@@ -8,12 +8,16 @@ export default class PopupWithoutInput extends Popup {
 
   setSubmitAction(action) {
     this._handleSubmitCallback = action;
-    this._form.addEventListener('submit', () => {
-			this._handleSubmitCallback();
-    });
-    this._form.addEventListener('submit', function (evt) {
+  }
+
+  setEventListeners() {
+    super.setEventListeners();
+    this._form.addEventListener('submit', (evt) => {
       evt.preventDefault();
+      this._handleSubmitCallback();
     });
   }
+
+
 
 }

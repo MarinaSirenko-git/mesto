@@ -11,11 +11,13 @@ export default class Api {
         authorization: this._token
       }
     })
-    .then(result => 
-      result.ok ? 
-      result.json() : 
-      Promise.reject(`Ошибка ${result.status}`)
-    )
+      .then(response => {
+        if (response.ok) {
+            return response.json();
+        }
+
+        return Promise.reject(`Ошибка ${response.status}`)
+      })
   }
 
   getUserData() {
@@ -24,11 +26,13 @@ export default class Api {
         authorization: this._token
       }
     })
-    .then(result => 
-      result.ok ? 
-      result.json() : 
-      Promise.reject(`Ошибка ${result.status}`)
-    )
+      .then(response => {
+        if (response.ok) {
+            return response.json();
+        }
+
+        return Promise.reject(`Ошибка ${response.status}`)
+      })
   }
 
   updateUserData(data) {
