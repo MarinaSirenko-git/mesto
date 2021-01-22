@@ -5,19 +5,21 @@ export default class Api {
 
   }
 
+  _checkResponse(response) {
+    {if (response.ok) {
+      return response.json();
+    }
+      return Promise.reject(`Ошибка ${response.status}`)
+    }
+  }
+
   getInitialCards() {
     return fetch(`${this._baseUrl}/cards`, {
       headers: {
         authorization: this._token
       }
     })
-      .then(response => {
-        if (response.ok) {
-            return response.json();
-        }
-
-        return Promise.reject(`Ошибка ${response.status}`)
-      })
+    .then(this._checkResponse)
   }
 
   getUserData() {
@@ -26,13 +28,7 @@ export default class Api {
         authorization: this._token
       }
     })
-      .then(response => {
-        if (response.ok) {
-            return response.json();
-        }
-
-        return Promise.reject(`Ошибка ${response.status}`)
-      })
+      .then(this._checkResponse)
   }
 
   updateUserData(data) {
@@ -47,11 +43,7 @@ export default class Api {
         about: data.career
       })
     })
-    .then(result => 
-      result.ok ? 
-      result.json() : 
-      Promise.reject(`Ошибка ${result.status}`)
-    )
+      .then(this._checkResponse)
   }
 
   updateAvatar(data) {
@@ -65,11 +57,7 @@ export default class Api {
         avatar: data.link
       })
     })
-    .then(result => 
-      result.ok ? 
-      result.json() : 
-      Promise.reject(`Ошибка ${result.status}`)
-    )
+      .then(this._checkResponse)
   }
 
   addNewCard(data) {
@@ -84,11 +72,7 @@ export default class Api {
         link: data.link
       })
     })
-    .then(result => 
-      result.ok ? 
-      result.json() : 
-      Promise.reject(`Ошибка ${result.status}`)
-    )
+      .then(this._checkResponse)
   }
 
   removeCard(_id) {
@@ -98,11 +82,7 @@ export default class Api {
         authorization: this._token
       }
     })
-    .then(result => 
-      result.ok ? 
-      result.json() : 
-      Promise.reject(`Ошибка ${result.status}`)
-    )
+      .then(this._checkResponse)
   }
 
   doLike(_id) {
@@ -112,11 +92,7 @@ export default class Api {
         authorization: this._token
       }
     })
-    .then(result => 
-      result.ok ? 
-      result.json() : 
-      Promise.reject(`Ошибка ${result.status}`)
-    )
+      .then(this._checkResponse)
   }
 
   removeLike(_id) {
@@ -126,11 +102,7 @@ export default class Api {
         authorization: this._token
       }
     })
-    .then(result => 
-      result.ok ? 
-      result.json() : 
-      Promise.reject(`Ошибка ${result.status}`)
-    )
+      .then(this._checkResponse)
   }
 
 }
