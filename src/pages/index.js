@@ -47,8 +47,7 @@ imagePopup.setEventListeners();
 const createCard = (data) => {
   const instanceCard = new Card({
     data: data,
-    userId: () => {
-    },
+    userId: userInfo.getUserId(),
     handleCardClick: () => {
       imagePopup.open(data);
     },
@@ -109,8 +108,6 @@ Promise.all(
   .catch(() => {
     (error => console.log(error))
   })
-
-  console.log(userInfo.getUserId())
 
 const userPopup = new PopupWithForm({
   popupSelector: '.popup_type_user-info',

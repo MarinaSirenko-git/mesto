@@ -35,19 +35,19 @@ export default class Card {
     this._cardImage.alt = this._name;
     title.textContent = this._name;
     this._likeCounter.textContent = this._like;
-    // this._checkDeleteState();
     this._setEventListeners();
+    this._checkDeleteState();
     return this._element;
+  }
+
+  _checkDeleteState() {
+    if(this._owner !== this._userId) {
+      this._deleteIcon.remove();
+    }
   }
 
   _checkLikeState() {
     return this._likeIcon.classList.contains('cards__like-btn_active');
-  }
-
-  checkDeleteState() {
-    if(this._owner !== this._userId) {
-      this._deleteIcon.remove();
-    }
   }
 
   _setEventListeners() {

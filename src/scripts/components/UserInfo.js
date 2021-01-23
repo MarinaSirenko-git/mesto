@@ -19,7 +19,6 @@ export default class UserInfo {
   }
 
   getUserId() {
-    console.log('test');
     return this._id;
   }
 
