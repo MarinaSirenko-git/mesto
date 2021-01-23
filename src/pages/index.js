@@ -47,7 +47,8 @@ imagePopup.setEventListeners();
 const createCard = (data) => {
   const instanceCard = new Card({
     data: data,
-    userId: '3260ef930264a94347d91318',
+    userId: () => {
+    },
     handleCardClick: () => {
       imagePopup.open(data);
     },
@@ -59,6 +60,7 @@ const createCard = (data) => {
             instanceCard.deleteCard();
             deletePopup.close();  
           })
+          .catch(error => console.log(`Ошибка ${error}`))
       })
     },
     likeAddTracker: (isLike) => {
@@ -108,12 +110,15 @@ Promise.all(
     (error => console.log(error))
   })
 
+  console.log(userInfo.getUserId())
+
 const userPopup = new PopupWithForm({
   popupSelector: '.popup_type_user-info',
   handleFormSubmit: (inputValues) => {
     userPopup.renderLoading(true);
     api.updateUserData(inputValues)
       .then((result) => {
+        console.log(result);
         userInfo.setUserInfo(result);
         userPopup.close();
       })

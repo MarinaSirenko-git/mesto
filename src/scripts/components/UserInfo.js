@@ -15,6 +15,12 @@ export default class UserInfo {
     this._nameUser.textContent = data.name;
     this._career.textContent = data.about;
     this._avatar.src = data.avatar;
+    this._id = data._id;
+  }
+
+  getUserId() {
+    console.log('test');
+    return this._id;
   }
 
 }

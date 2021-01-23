@@ -35,7 +35,7 @@ export default class Card {
     this._cardImage.alt = this._name;
     title.textContent = this._name;
     this._likeCounter.textContent = this._like;
-    this._checkDeleteState();
+    // this._checkDeleteState();
     this._setEventListeners();
     return this._element;
   }
@@ -44,7 +44,7 @@ export default class Card {
     return this._likeIcon.classList.contains('cards__like-btn_active');
   }
 
-  _checkDeleteState() {
+  checkDeleteState() {
     if(this._owner !== this._userId) {
       this._deleteIcon.remove();
     }
